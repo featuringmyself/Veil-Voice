@@ -69,7 +69,7 @@ export default async function AnswerQuestion({ params }: PageProps) {
     const questionId = formData.get('questionId') as string;
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/answers`, {
+      const response = await fetch(`/api/answers`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
