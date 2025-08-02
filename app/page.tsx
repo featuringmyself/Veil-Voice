@@ -1,21 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
-import logo from "@/public/logo.png"
+import logo from "@/public/logo.png";
+
 export default function Home() {
   return (
     <div>
       <div className="h-screen w-screen flex flex-col items-center justify-center relative">
         <Image src={logo} alt="logo" width={100} height={100} />
-    
-        <h2 className="text-7xl mx-auto text-center font-bold text-transparent bg-clip-text bg-gradient-to-br from-black to-zinc-400 mt-5">Real Feedbacks. <br />Zero Barriers.</h2>
-        <p className="mt-8 max-w-xl text-center text-pretty font-medium text-zinc-700 leading-tight text-xl">People hold back honest feedback due to fear or hassle: Our platform makes sharing simple, safe, and anonymous.</p>
-
-        <Link href={"/register-user"} className="mt-10 bg-gradient-to-tl from-black to-zinc-500 hover:bg-gradient-to-br transition-all duration-1000  px-4 py-4 text-white font-semibold rounded-2xl">Start Collecting Reviews</Link>
-
-
-
-
         
+        <h2 className="text-7xl mx-auto text-center font-bold text-transparent bg-clip-text bg-gradient-to-br from-black to-zinc-400 mt-5">
+          Real Feedbacks. <br />Zero Barriers.
+        </h2>
+        
+        <p className="mt-8 max-w-xl text-center text-pretty font-medium text-zinc-700 leading-tight text-xl">
+          People hold back honest feedback due to fear or hassle: Our platform makes sharing simple, safe, and anonymous.
+        </p>
+
+        <Link 
+          href="/register-user" 
+          className="mt-10 bg-gradient-to-tl from-black to-zinc-500 hover:bg-gradient-to-br transition-all duration-1000 px-4 py-4 text-white font-semibold rounded-2xl"
+        >
+          Start Collecting Reviews
+        </Link>
+
+        {/* Floating Feedback Cards */}
         {/* Top Left */}
         <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-6 left-6 rotate-[-10deg] transition-all duration-300 hover:-translate-x-2 hover:-translate-y-2">
           <p className="text-xl">It was too spicy 🌶️</p>
@@ -60,7 +68,7 @@ export default function Home() {
           <p className="text-xl">Too late deliveries</p>
         </div>
 
-        {/* Sides - Horizontal Spread */}
+        {/* Side Cards */}
         <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-1/4 left-[2%] rotate-[-8deg] transition-all duration-300 hover:translate-x-1 hover:-translate-y-2">
           <p className="text-xl">Unexpectedly 🔥</p>
         </div>
@@ -68,7 +76,7 @@ export default function Home() {
           <p className="text-xl">What was that heat!? 😵‍💫</p>
         </div>
 
-        {/* Diagonal Corners */}
+        {/* Diagonal Corner Cards */}
         <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-[5%] right-[5%] rotate-[15deg] transition-all duration-300 hover:translate-x-2 hover:-translate-y-2">
           <p className="text-xl">A literal fireball 🌶️</p>
         </div>
@@ -76,15 +84,13 @@ export default function Home() {
           <p className="text-xl">🔥 Not again!</p>
         </div>
 
-        {/* Off-Center but not middle */}
+        {/* Off-Center Cards */}
         <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-[35%] left-[10%] rotate-[6deg] transition-all duration-300 hover:translate-y-2 hover:translate-x-2">
           <p className="text-xl">Never felt this heat 😳</p>
         </div>
         <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-[60%] right-[8%] rotate-[-6deg] transition-all duration-300 hover:-translate-y-2 hover:-translate-x-2">
           <p className="text-xl">🔥 That escalated fast</p>
         </div>
-
-
       </div>
     </div>
   );
