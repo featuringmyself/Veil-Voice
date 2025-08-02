@@ -33,7 +33,7 @@ export default function Home() {
             <p className="text-lg">🔥 My mouth is burning!</p>
           </div>
           <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-8 right-8 rotate-[11deg] transition-all duration-300 hover:translate-y-1 hover:-translate-x-1 opacity-80">
-            <p className="text-lg">Features don't work!</p>
+            <p className="text-lg">Features don&apos;t work!</p>
           </div>
           <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-20 right-24 rotate-[-6deg] transition-all duration-300 hover:translate-x-1 hover:translate-y-1 opacity-80">
             <p className="text-lg">I wasn&apos;t ready 😵</p>
