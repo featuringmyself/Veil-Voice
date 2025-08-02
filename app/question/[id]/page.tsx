@@ -68,29 +68,27 @@ export default async function AnswerQuestion({ params }: PageProps) {
     const answer = formData.get('answer') as string;
     const questionId = formData.get('questionId') as string;
 
+    if (!questionId || !answer) {
+      throw new Error('Missing required fields: questionId and answer');
+    }
+
     try {
-      const response = await fetch(`/api/answers`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          questionId,
+      const newAnswer = await prisma.answer.create({
+        data: {
+          questionId: parseInt(questionId),
           answer
-        })
+        }
       });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to submit answer');
-      }
-
-      const result = await response.json();
-      console.log('Answer submitted successfully:', result);
+      
+      console.log('Answer submitted successfully:', newAnswer);
     } catch (error) {
       console.error('Error submitting answer:', error);
-      throw error; // Re-throw to let Next.js handle it
+      throw new Error('Failed to submit answer');
     }
+
+    // Redirect outside of try-catch to avoid catching the redirect error
+    const { redirect } = await import('next/navigation');
+    redirect(`/question/${questionId}`);
   }
 
   const answers = await prisma.answer.findMany({
