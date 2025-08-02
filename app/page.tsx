@@ -5,90 +5,121 @@ import logo from "@/public/logo.png";
 export default function Home() {
   return (
     <div>
-      <div className="h-screen w-screen flex flex-col items-center justify-center relative">
-        <Image src={logo} alt="logo" width={100} height={100} />
+      <div className="min-h-screen w-full flex flex-col items-center justify-center relative px-4 py-8 overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100">
+        <Image src={logo} alt="logo" width={80} height={80} className="sm:w-[100px] sm:h-[100px]" />
 
-        <h2 className="text-7xl mx-auto text-center font-bold text-transparent bg-clip-text bg-gradient-to-br from-black to-zinc-400 mt-5">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mx-auto text-center font-bold text-transparent bg-clip-text bg-gradient-to-br from-black to-zinc-400 mt-5 leading-tight">
           Real Feedbacks. <br />Zero Barriers.
         </h2>
 
-        <p className="mt-8 max-w-xl text-center text-pretty font-medium text-zinc-700 leading-tight text-xl">
+        <p className="mt-6 sm:mt-8 max-w-sm sm:max-w-xl text-center text-pretty font-medium text-zinc-700 leading-tight text-lg sm:text-xl px-4">
           People hold back honest feedback due to fear or hassle: Our platform makes sharing simple, safe, and anonymous.
         </p>
 
         <Link
           href="/register-user"
-          className="mt-10 bg-gradient-to-tl from-black to-zinc-500 hover:bg-gradient-to-br transition-all duration-1000 px-4 py-4 text-white font-semibold rounded-2xl"
+          className="mt-8 sm:mt-10 bg-gradient-to-tl from-black to-zinc-500 hover:bg-gradient-to-br transition-all duration-1000 px-6 py-3 sm:px-4 sm:py-4 text-white font-semibold rounded-2xl text-center"
         >
           Start Collecting Reviews
         </Link>
 
-        {/* Floating Feedback Cards */}
-        {/* Top Left */}
-        <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-6 left-6 rotate-[-10deg] transition-all duration-300 hover:-translate-x-2 hover:-translate-y-2">
-          <p className="text-xl">It was too spicy 🌶️</p>
-        </div>
-        <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-14 left-20 rotate-[7deg] transition-all duration-300 hover:translate-x-2 hover:-translate-y-1">
-          <p className="text-xl">🔥 My mouth is burning!</p>
-        </div>
-        <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-24 left-10 rotate-[-12deg] transition-all duration-300 hover:-translate-y-2 hover:translate-x-1">
-          <p className="text-xl">Screamed for water 💧</p>
+        {/* Desktop floating feedback cards - positioned around main content */}
+        <div className="hidden lg:block">
+          {/* Top area cards */}
+          <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-8 left-8 rotate-[-10deg] transition-all duration-300 hover:-translate-x-1 hover:-translate-y-1 opacity-80">
+            <p className="text-lg">It was too spicy 🌶️</p>
+          </div>
+          <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-16 left-32 rotate-[7deg] transition-all duration-300 hover:translate-x-1 hover:-translate-y-1 opacity-80">
+            <p className="text-lg">🔥 My mouth is burning!</p>
+          </div>
+          <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-8 right-8 rotate-[11deg] transition-all duration-300 hover:translate-y-1 hover:-translate-x-1 opacity-80">
+            <p className="text-lg">Features don't work!</p>
+          </div>
+          <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-20 right-24 rotate-[-6deg] transition-all duration-300 hover:translate-x-1 hover:translate-y-1 opacity-80">
+            <p className="text-lg">I wasn't ready 😵</p>
+          </div>
+
+          {/* Side cards - positioned to avoid center content */}
+          <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-1/3 left-4 rotate-[-8deg] transition-all duration-300 hover:translate-x-1 hover:-translate-y-1 opacity-75">
+            <p className="text-lg">Unexpectedly 🔥</p>
+          </div>
+          <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-2/3 right-4 rotate-[6deg] transition-all duration-300 hover:-translate-x-1 hover:-translate-y-1 opacity-75">
+            <p className="text-lg">What was that heat!? 😵‍💫</p>
+          </div>
+
+          {/* Bottom area cards */}
+          <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg bottom-8 left-8 rotate-[13deg] transition-all duration-300 hover:translate-x-1 hover:-translate-y-1 opacity-80">
+            <p className="text-lg">Not Value for Money</p>
+          </div>
+          <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg bottom-16 left-32 rotate-[-7deg] transition-all duration-300 hover:-translate-y-1 hover:-translate-x-1 opacity-80">
+            <p className="text-lg">Support team is rude</p>
+          </div>
+          <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg bottom-8 right-8 rotate-[6deg] transition-all duration-300 hover:translate-y-1 hover:-translate-x-1 opacity-80">
+            <p className="text-lg">I cried 🥵</p>
+          </div>
+          <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg bottom-20 right-24 rotate-[-10deg] transition-all duration-300 hover:translate-x-1 hover:-translate-y-1 opacity-80">
+            <p className="text-lg">Too late deliveries</p>
+          </div>
         </div>
 
-        {/* Top Right */}
-        <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-8 right-6 rotate-[11deg] transition-all duration-300 hover:translate-y-2 hover:-translate-x-1">
-          <p className="text-xl">🌶️🔥 Features don&apos;t always work!</p>
-        </div>
-        <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-20 right-20 rotate-[-6deg] transition-all duration-300 hover:translate-x-2 hover:translate-y-1">
-          <p className="text-xl">I wasn&apos;t ready for this 😵</p>
-        </div>
-        <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-36 right-10 rotate-[9deg] transition-all duration-300 hover:-translate-y-2 hover:translate-x-2">
-          <p className="text-xl">Very bad UX</p>
-        </div>
-
-        {/* Bottom Left */}
-        <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg bottom-12 left-6 rotate-[13deg] transition-all duration-300 hover:translate-x-2 hover:-translate-y-1">
-          <p className="text-xl">Not Value for Money</p>
-        </div>
-        <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg bottom-20 left-24 rotate-[-7deg] transition-all duration-300 hover:-translate-y-1 hover:-translate-x-2">
-          <p className="text-xl">Support Executives are rude</p>
-        </div>
-        <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg bottom-32 left-10 rotate-[15deg] transition-all duration-300 hover:translate-x-2 hover:translate-y-2">
-          <p className="text-xl">Bad Ambience!</p>
-        </div>
-        {/* Bottom Right */}
-        <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg bottom-10 right-8 rotate-[6deg] transition-all duration-300 hover:translate-y-2 hover:-translate-x-2">
-          <p className="text-xl">I cried 🥵</p>
-        </div>
-        <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg bottom-28 right-14 rotate-[-10deg] transition-all duration-300 hover:translate-x-2 hover:-translate-y-2">
-          <p className="text-xl">Was not at all hygenic</p>
-        </div>
-        <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg bottom-36 right-6 rotate-[12deg] transition-all duration-300 hover:-translate-x-2 hover:-translate-y-1">
-          <p className="text-xl">Too late deliveries</p>
+        {/* Extra cards for very large screens */}
+        <div className="hidden xl:block">
+          <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-32 left-16 rotate-[-12deg] transition-all duration-300 hover:-translate-y-1 hover:translate-x-1 opacity-70">
+            <p className="text-lg">Screamed for water 💧</p>
+          </div>
+          <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-40 right-16 rotate-[9deg] transition-all duration-300 hover:-translate-y-1 hover:translate-x-1 opacity-70">
+            <p className="text-lg">Very bad UX</p>
+          </div>
+          <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg bottom-32 left-16 rotate-[15deg] transition-all duration-300 hover:translate-x-1 hover:translate-y-1 opacity-70">
+            <p className="text-lg">Bad Ambience!</p>
+          </div>
+          <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg bottom-40 right-16 rotate-[12deg] transition-all duration-300 hover:-translate-x-1 hover:-translate-y-1 opacity-70">
+            <p className="text-lg">Not hygienic</p>
+          </div>
+          <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-1/2 left-12 rotate-[6deg] transition-all duration-300 hover:translate-y-1 hover:translate-x-1 opacity-65">
+            <p className="text-lg">Never felt this heat 😳</p>
+          </div>
+          <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-1/2 right-12 rotate-[-6deg] transition-all duration-300 hover:-translate-y-1 hover:-translate-x-1 opacity-65">
+            <p className="text-lg">🔥 That escalated fast</p>
+          </div>
         </div>
 
-        {/* Side Cards */}
-        <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-1/4 left-[2%] rotate-[-8deg] transition-all duration-300 hover:translate-x-1 hover:-translate-y-2">
-          <p className="text-xl">Unexpectedly 🔥</p>
-        </div>
-        <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg bottom-1/4 right-[3%] rotate-[6deg] transition-all duration-300 hover:-translate-x-1 hover:-translate-y-2">
-          <p className="text-xl">What was that heat!? 😵‍💫</p>
+        {/* Mobile feedback cards - subtle but present */}
+        <div className="md:hidden">
+          <div className="absolute bg-white shadow-md font-semibold px-3 py-2 rounded-lg top-6 left-4 rotate-[-8deg] transition-all duration-300 opacity-75">
+            <p className="text-sm">Too spicy 🌶️</p>
+          </div>
+          <div className="absolute bg-white shadow-md font-semibold px-3 py-2 rounded-lg top-12 right-4 rotate-[6deg] transition-all duration-300 opacity-75">
+            <p className="text-sm">Bad UX</p>
+          </div>
+          <div className="absolute bg-white shadow-md font-semibold px-3 py-2 rounded-lg bottom-6 left-4 rotate-[10deg] transition-all duration-300 opacity-75">
+            <p className="text-sm">Not worth it</p>
+          </div>
+          <div className="absolute bg-white shadow-md font-semibold px-3 py-2 rounded-lg bottom-12 right-4 rotate-[-5deg] transition-all duration-300 opacity-75">
+            <p className="text-sm">I cried 🥵</p>
+          </div>
+          <div className="absolute bg-white shadow-md font-semibold px-3 py-2 rounded-lg top-1/3 left-2 rotate-[-12deg] transition-all duration-300 opacity-60">
+            <p className="text-sm">🔥 Help!</p>
+          </div>
+          <div className="absolute bg-white shadow-md font-semibold px-3 py-2 rounded-lg bottom-1/3 right-2 rotate-[8deg] transition-all duration-300 opacity-60">
+            <p className="text-sm">😵 Wow</p>
+          </div>
         </div>
 
-        {/* Diagonal Corner Cards */}
-        <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-[5%] right-[5%] rotate-[15deg] transition-all duration-300 hover:translate-x-2 hover:-translate-y-2">
-          <p className="text-xl">A literal fireball 🌶️</p>
-        </div>
-        <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg bottom-[5%] left-[5%] rotate-[-15deg] transition-all duration-300 hover:-translate-x-2 hover:translate-y-1">
-          <p className="text-xl">🔥 Not again!</p>
-        </div>
-
-        {/* Off-Center Cards */}
-        <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-[35%] left-[10%] rotate-[6deg] transition-all duration-300 hover:translate-y-2 hover:translate-x-2">
-          <p className="text-xl">Never felt this heat 😳</p>
-        </div>
-        <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-[60%] right-[8%] rotate-[-6deg] transition-all duration-300 hover:-translate-y-2 hover:-translate-x-2">
-          <p className="text-xl">🔥 That escalated fast</p>
+        {/* Medium screens - balanced approach */}
+        <div className="hidden md:block lg:hidden">
+          <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-8 left-6 rotate-[-8deg] transition-all duration-300 hover:-translate-x-1 hover:-translate-y-1 opacity-70">
+            <p className="text-sm">🌶️ Too spicy</p>
+          </div>
+          <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg top-16 right-6 rotate-[6deg] transition-all duration-300 hover:translate-x-1 hover:-translate-y-1 opacity-70">
+            <p className="text-sm">Bad UX</p>
+          </div>
+          <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg bottom-8 left-6 rotate-[10deg] transition-all duration-300 hover:-translate-x-1 hover:-translate-y-1 opacity-70">
+            <p className="text-sm">Not worth it</p>
+          </div>
+          <div className="absolute bg-white shadow-sm font-semibold px-2 py-2 rounded-lg bottom-16 right-6 rotate-[-5deg] transition-all duration-300 hover:translate-x-1 hover:-translate-y-1 opacity-70">
+            <p className="text-sm">😵 Help me</p>
+          </div>
         </div>
       </div>
     </div>
