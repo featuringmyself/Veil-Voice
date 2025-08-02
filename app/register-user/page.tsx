@@ -15,7 +15,7 @@ interface Question {
     createdAt: string;
 }
 
-export default function registerUser() {
+export default function RegisterUser() {
     const [question, setQuestion] = useState("");
     const [questions, setQuestions] = useState<Question[]>([]);
     const [isSubmitting, setIsSubmitting] = useState(false);

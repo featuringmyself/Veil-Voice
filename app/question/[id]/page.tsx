@@ -7,13 +7,13 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function AnswerQuestion({ params }: PageProps) {
-  const { id } = params;
+  const { id } = await params;
   const qId = parseInt(id);
 
   if (isNaN(qId)) {
@@ -50,7 +50,7 @@ export default async function AnswerQuestion({ params }: PageProps) {
           <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-black to-zinc-400 mb-4">
             Question Not Found
           </h1>
-          <p className="text-zinc-700 mb-6">The question you're looking for doesn't exist or has been removed.</p>
+          <p className="text-zinc-700 mb-6">The question you&apos;re looking for doesn&apos;t exist or has been removed.</p>
           <Link
             href="/register-user"
             className="inline-block bg-gradient-to-r from-black to-zinc-600 hover:from-zinc-800 hover:to-zinc-700 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
