@@ -25,7 +25,7 @@ model Question {
   updatedAt       DateTime @updatedAt
   showOnCommunity Boolean  @default(true)
   answers         Answer[]
-  author          User?    @relation(fields: [authorId], references: [id])̦
+  author          User?    @relation(fields: [authorId], references: [id])
 }
 
 model Answer {
