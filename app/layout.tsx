@@ -19,6 +19,28 @@ export const metadata: Metadata = {
   title: "Veil Voice",
   description: "100% anonymous reviews",
   viewport: "width=device-width, initial-scale=1",
+  openGraph: {
+    title: "Veil Voice",
+    description: "100% anonymous reviews",
+    url: "https://veilvoice.dodox.in/",
+    siteName: "Veil Voice",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Veil Voice - 100% anonymous reviews",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Veil Voice",
+    description: "100% anonymous reviews",
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({
