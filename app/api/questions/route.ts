@@ -7,7 +7,12 @@ export async function GET() {
         const questions = await prisma.question.findMany({
             orderBy: {
                 createdAt: 'desc'
+            },
+            where: {
+                published: true,
+                showOnCommunity: true
             }
+
         });
         return NextResponse.json(questions);
     } catch (error) {
@@ -18,14 +23,14 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
     try {
-        const { question } = await request.json();
-        
+        const { question, showOnCommunity = true, published = false } = await request.json();
+
         if (!question || !question.trim()) {
             return NextResponse.json({ error: 'Question is required' }, { status: 400 });
         }
 
         const user = await getCurrentUser();
-        
+
         if (!user) {
             return NextResponse.json({ error: 'User not authenticated' }, { status: 401 });
         }
@@ -33,7 +38,9 @@ export async function POST(request: NextRequest) {
         const newQuestion = await prisma.question.create({
             data: {
                 question: question.trim(),
-                authorId: user.id
+                authorId: user.id,
+                showOnCommunity: Boolean(showOnCommunity),
+                published: Boolean(published)
             }
         });
 

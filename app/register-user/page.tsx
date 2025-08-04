@@ -2,6 +2,7 @@
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button"
+import { Switch } from "@/components/ui/switch"
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/public/logo.png";
@@ -19,6 +20,7 @@ export default function RegisterUser() {
     const [question, setQuestion] = useState("");
     const [questions, setQuestions] = useState<Question[]>([]);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [showInCommunity, setShowInCommunity] = useState(true);
 
     // Fetch questions on component mount
     useEffect(() => {
@@ -50,7 +52,11 @@ export default function RegisterUser() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ question: question.trim() }),
+                body: JSON.stringify({
+                    question: question.trim(),
+                    showInCommunity: showInCommunity,
+                    published: true
+                }),
             });
 
             if (response.ok) {
@@ -121,6 +127,25 @@ export default function RegisterUser() {
                                 </SignedOut>
                             </div>
                         </div>
+
+                        {/* Community Visibility Toggle - Only for signed in users */}
+                        <SignedIn>
+                            <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-200">
+                                <div className="flex flex-col">
+                                    <label className="text-sm font-medium text-gray-800">
+                                        Show in Community
+                                    </label>
+                                    <p className="text-xs text-gray-600">
+                                        Allow others to see and respond to your question
+                                    </p>
+                                </div>
+                                <Switch
+                                    checked={showInCommunity}
+                                    onCheckedChange={setShowInCommunity}
+                                    className="data-[state=checked]:bg-black"
+                                />
+                            </div>
+                        </SignedIn>
                     </form>
                 </div>
 
@@ -135,21 +160,21 @@ export default function RegisterUser() {
                                 <Link
                                     key={question.id}
                                     href={`/question/${question.id}`}
-                                    >
-                                <div
-                                    key={question.id}
-                                    className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                                    style={{
-                                        transform: `rotate(${(index % 3 - 1) * 2}deg)`,
-                                    }}
                                 >
-                                    <div className="flex items-start gap-3">
-                                        <div className="w-2 h-2 bg-gradient-to-r from-black to-zinc-400 rounded-full mt-2 flex-shrink-0"></div>
-                                        <p className="text-gray-800 font-medium leading-relaxed">
-                                            {question.question}
-                                        </p>
+                                    <div
+                                        key={question.id}
+                                        className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                                        style={{
+                                            transform: `rotate(${(index % 3 - 1) * 2}deg)`,
+                                        }}
+                                    >
+                                        <div className="flex items-start gap-3">
+                                            <div className="w-2 h-2 bg-gradient-to-r from-black to-zinc-400 rounded-full mt-2 flex-shrink-0"></div>
+                                            <p className="text-gray-800 font-medium leading-relaxed">
+                                                {question.question}
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
                                 </Link>
                             ))}
                         </div>
