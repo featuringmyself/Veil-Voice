@@ -4,18 +4,19 @@ import { getCurrentUser } from '@/lib/user';
 
 export async function PATCH(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
         const { published, showOnCommunity } = await request.json();
-        const questionId = parseInt(params.id);
+        const resolvedParams = await params;
+        const questionId = parseInt(resolvedParams.id);
 
         if (isNaN(questionId)) {
             return NextResponse.json({ error: 'Invalid question ID' }, { status: 400 });
         }
 
         const user = await getCurrentUser();
-        
+
         if (!user) {
             return NextResponse.json({ error: 'User not authenticated' }, { status: 401 });
         }
